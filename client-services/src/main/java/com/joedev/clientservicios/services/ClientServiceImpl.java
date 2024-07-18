@@ -2,9 +2,9 @@ package com.joedev.clientservicios.services;
 
 import com.joedev.clientservicios.dto.ClienteDto;
 import com.joedev.clientservicios.entity.Cliente;
-import com.joedev.clientservicios.exceptions.BusinessException;
-import com.joedev.clientservicios.exceptions.NotFoundException;
 import com.joedev.clientservicios.repository.ClienteRepository;
+import exceptions.BusinessException;
+import exceptions.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
