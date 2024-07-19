@@ -18,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 public class CuentaDto {
     private Long id;
-    private String numero;
+    private Long numero;
     private TipoCuenta tipo;
     private BigDecimal saldoInicial;
     private Boolean estado;

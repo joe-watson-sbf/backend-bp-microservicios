@@ -8,6 +8,7 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -18,9 +19,11 @@ import java.util.List;
 @Entity(name = "cuentas")
 public class Cuenta {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cuenta_seq")
+    @SequenceGenerator(name = "cuenta_seq", sequenceName = "cuenta_sequence", allocationSize = 1)
     private Long id;
-    private Integer numero;
+    @Column(nullable = false, unique = true)
+    private Long numero;
     @Enumerated(EnumType.STRING)
     private TipoCuenta tipo;
     private BigDecimal saldoInicial;
@@ -45,7 +48,7 @@ public class Cuenta {
     }
 
     private void generarNumeroDeCuenta() {
-        this.numero = (int) (Math.random() * 1000000);
+        this.numero = new Date().getTime() + (long) (Math.random() * 1703);
     }
 
     public void actualizarSaldo(BigDecimal valor) {

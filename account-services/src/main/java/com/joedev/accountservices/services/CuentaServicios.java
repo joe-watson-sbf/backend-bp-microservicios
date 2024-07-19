@@ -53,11 +53,16 @@ public class CuentaServicios implements BaseCrudServices<CuentaDto, Long> {
          * si existe realmente el cliente con el id proporcionado,
          * pero to-do depende de la lógica de negocio
          * */
+
         if(!clienteApi.existeCliente(cuentaDto.getClienteId())){
             throw new BusinessException("El cliente con el id: " + cuentaDto.getClienteId() + " no existe");
         }
 
-        Cuenta cuenta = mapper.map(cuentaDto, Cuenta.class);
+        Cuenta cuenta = Cuenta.builder()
+                .tipo(cuentaDto.getTipo())
+                .saldoInicial(cuentaDto.getSaldoInicial())
+                .clienteId(cuentaDto.getClienteId())
+                .build();
         return mapper.map(cuentaRepository.save(cuenta), CuentaDto.class);
     }
 
@@ -72,18 +77,26 @@ public class CuentaServicios implements BaseCrudServices<CuentaDto, Long> {
     public void update(Long id, CuentaDto cuentaDto) {
         requireNonNull(id, "El id no puede ser nulo");
         requireNonNull(cuentaDto, "Los datos de la cuenta no pueden ser nulos");
-        Cuenta cuenta = getCuenta(id);
-        cuenta.setTipo(cuentaDto.getTipo());
+
+        /*
+        * Hay que tener en cuenta que no se puede modificar el saldo inicial de una cuenta
+        * y muchos datos más, pero to-do depende de la lógica de negocio
+        * */
+
+        /*Cuenta cuenta = getCuenta(id);
         cuenta.setSaldoInicial(cuentaDto.getSaldoInicial());
-        cuentaRepository.save(cuenta);
+        cuentaRepository.save(cuenta);*/
     }
 
     @Transactional
-    public MovimientoDto registrarMovimiento(Long cuentaId, BigDecimal valor) {
+    public MovimientoDto registrarMovimiento(Long numeroCuenta, BigDecimal valor) {
         // antes de hacer cualquier operación es importante verificar el valor ingresado
         requiereValorDiferenteDeCero(valor);
 
-        Cuenta cuenta = getCuenta(cuentaId);
+        Cuenta cuenta = cuentaRepository.findCuentaByNumero(numeroCuenta)
+                .orElseThrow(
+                        () -> new NotFoundException("No se encontró la cuenta con el número: " + numeroCuenta)
+                );
 
         // Va lanzar un error si no tiene fondo disponible
         cuenta.asegurarQueTieneFondoDisponible(valor);

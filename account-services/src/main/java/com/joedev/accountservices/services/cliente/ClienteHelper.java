@@ -14,11 +14,7 @@ public class ClienteHelper implements ClienteApi {
 
     @Override
     public boolean existeCliente(Long clienteId){
-        return Boolean.TRUE.equals(webClient.get()
-                .uri("/clientes/{id}", clienteId)
-                .retrieve()
-                .bodyToMono(Boolean.class)
-                .block());
+        return findById(clienteId).isPresent();
     }
 
     @Override

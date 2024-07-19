@@ -17,7 +17,8 @@ import java.time.LocalDate;
 @Entity(name = "movimientos")
 public class Movimiento {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "movimiento_seq")
+    @SequenceGenerator(name = "movimiento_seq", sequenceName = "movimiento_sequence", allocationSize = 1)
     private Long id;
     private LocalDate fecha;
     @Enumerated(EnumType.STRING)
