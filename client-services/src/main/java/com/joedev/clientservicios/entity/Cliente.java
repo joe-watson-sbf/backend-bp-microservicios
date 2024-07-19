@@ -9,7 +9,6 @@ import lombok.*;
 @NoArgsConstructor
 @Entity(name = "clientes")
 public class Cliente extends Persona {
-    private Long id;
     private String contrasena;
     private Boolean estado;
 

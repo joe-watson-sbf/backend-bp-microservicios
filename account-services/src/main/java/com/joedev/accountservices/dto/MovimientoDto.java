@@ -1,5 +1,7 @@
 package com.joedev.accountservices.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.joedev.accountservices.entity.TipoDeMovimiento;
 import lombok.*;
 
 import java.io.Serializable;
@@ -17,7 +19,9 @@ import java.time.LocalDate;
 public class MovimientoDto {
     private Long id;
     private LocalDate fecha;
-    private String tipo;
+    private TipoDeMovimiento tipo;
     private BigDecimal valor;
     private BigDecimal saldo;
+    @JsonIgnoreProperties("movimientos")
+    private CuentaDto cuenta;
 }

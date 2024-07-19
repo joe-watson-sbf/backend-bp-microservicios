@@ -1,7 +1,7 @@
 package com.joedev.clientservicios.controller;
 
 import com.joedev.clientservicios.dto.ClienteDto;
-import com.joedev.clientservicios.services.ClientService;
+import com.joedev.clientservicios.services.ClienteServicios;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +11,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/clientes")
 @RequiredArgsConstructor
-public class ClientController {
+public class ClienteController {
 
-    private final ClientService clientService;
+    private final ClienteServicios clientService;
 
     @GetMapping
     public List<ClienteDto> getAllClients() {

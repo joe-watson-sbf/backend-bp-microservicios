@@ -7,7 +7,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <artifactId>shared</artifactId>
-    <name>Archetype - shared</name>
+    <name>Shared</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -15,12 +15,4 @@
         <marven.compiler.target>17</marven.compiler.target>
         <java.version>17</java.version>
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.modelmapper</groupId>
-            <artifactId>modelmapper</artifactId>
-            <version>3.2.0</version>
-        </dependency>
-    </dependencies>
 </project>

@@ -1,10 +1,10 @@
-package com.joedev.accountservices;
+package com.joedev.clientservicios;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AccountServicesApplicationTests {
+class ClienteServiciosApplicationTests {
 
     @Test
     void contextLoads() {
