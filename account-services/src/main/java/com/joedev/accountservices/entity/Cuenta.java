@@ -46,7 +46,7 @@ public class Cuenta {
     }
 
     private void generarNumeroDeCuenta() {
-        this.numero = new Date().getTime() + (long) (Math.random() * 1703);
+        this.numero = new Date().getTime();
     }
 
     public void actualizarSaldo(BigDecimal valor) {
