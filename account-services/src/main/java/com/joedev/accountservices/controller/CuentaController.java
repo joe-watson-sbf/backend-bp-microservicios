@@ -1,7 +1,6 @@
 package com.joedev.accountservices.controller;
 
 import com.joedev.accountservices.dto.CuentaDto;
-import com.joedev.accountservices.dto.MovimientoDto;
 import com.joedev.accountservices.services.CuentaServicios;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

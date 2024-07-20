@@ -1,6 +1,6 @@
 package com.joedev.accountservices.controller;
 
-import com.joedev.accountservices.dto.ReporteEstadoCuenta;
+import com.joedev.accountservices.dto.ReportePorFechas;
 import com.joedev.accountservices.services.ReporteServicio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDate;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -19,7 +20,7 @@ public class ReporteController {
     private final ReporteServicio reporteServicio;
 
     @GetMapping
-    public ResponseEntity<Object> generarReporte(
+    public ResponseEntity<List<ReportePorFechas>> generarReporte(
             @RequestParam Long clienteId,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaInicio,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaFin

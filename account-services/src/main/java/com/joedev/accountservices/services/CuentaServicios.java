@@ -1,7 +1,5 @@
 package com.joedev.accountservices.services;
-
 import com.joedev.accountservices.dto.CuentaDto;
-import com.joedev.accountservices.dto.MovimientoDto;
 import com.joedev.accountservices.entity.Cuenta;
 import com.joedev.accountservices.entity.Movimiento;
 import com.joedev.accountservices.entity.TipoDeMovimiento;

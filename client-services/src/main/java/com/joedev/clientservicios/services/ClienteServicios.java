@@ -67,7 +67,6 @@ public class ClienteServicios implements BaseCrudServices<ClienteDto, Long> {
         cliente.setContrasena(clienteDto.getContrasena());
         cliente.setDireccion(clienteDto.getDireccion());
         cliente.setTelefono(clienteDto.getTelefono());
-        cliente.setIdentificacion(clienteDto.getIdentificacion());
 
         clienteRepository.save(cliente);
     }

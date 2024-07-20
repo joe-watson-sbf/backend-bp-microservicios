@@ -12,7 +12,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ClienteHelper implements ClienteApi {
 
-    private final WebClient webClient;
+    private final WebClient.Builder webClientBuilder;
 
     @Override
     public boolean existeCliente(Long clienteId){
@@ -21,7 +21,7 @@ public class ClienteHelper implements ClienteApi {
 
     @Override
     public Optional<ClienteModel> findById(Long clientId) {
-        return webClient.get()
+        return webClientBuilder.build().get()
                 .uri("/clientes/{id}", clientId)
                 .retrieve()
                 .onStatus(status -> status.is4xxClientError() || status.is5xxServerError(),

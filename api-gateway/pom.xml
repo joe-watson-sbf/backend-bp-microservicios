@@ -6,38 +6,23 @@
         <artifactId>backend-bp</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>account-services</artifactId>
-    <name>Account Services</name>
+    <artifactId>api-gateway</artifactId>
+    <name>Api Gateway</name>
     <url>http://maven.apache.org</url>
 
-    <properties>
-        <marven.compiler.source>17</marven.compiler.source>
-        <marven.compiler.target>17</marven.compiler.target>
-        <java.version>17</java.version>
-    </properties>
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway-mvc</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.joedev.microservices</groupId>
-            <artifactId>shared</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
     </dependencies>
-
 </project>
