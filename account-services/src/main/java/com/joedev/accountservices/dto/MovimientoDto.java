@@ -22,6 +22,7 @@ public class MovimientoDto {
     private TipoDeMovimiento tipo;
     private BigDecimal valor;
     private BigDecimal saldo;
+    private BigDecimal saldoAnterior;
     @JsonIgnoreProperties("movimientos")
     private CuentaDto cuenta;
 }

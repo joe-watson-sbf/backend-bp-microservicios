@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/cuentas")
+@RequestMapping("/api/cuentas")
 public class CuentaController {
     private final CuentaServicios servicios;
 
@@ -32,11 +32,12 @@ public class CuentaController {
     }
 
     @PutMapping
-    public ResponseEntity<MovimientoDto> registrarMovimiento(
+    public ResponseEntity<Void> registrarMovimiento(
             @RequestParam Long numeroCuenta,
             @RequestParam BigDecimal saldo
             ) {
-        return ResponseEntity.ok(servicios.registrarMovimiento(numeroCuenta, saldo));
+        servicios.registrarMovimiento(numeroCuenta, saldo);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")

@@ -29,17 +29,10 @@ public class Movimiento {
     @JoinColumn(name = "cuenta_id")
     @JsonBackReference
     private Cuenta cuenta;
+    private BigDecimal saldoAnterior;
 
     @PrePersist
     public void prePersist() {
         this.fecha = LocalDate.now();
-    }
-
-    private void manejoTipoDeMovimiento(TipoDeMovimiento tipo) {
-        if (tipo == TipoDeMovimiento.RETIRO) {
-            this.saldo = this.saldo.subtract(this.valor);
-        } else if (tipo == TipoDeMovimiento.DEPOSITO) {
-            this.saldo = this.saldo.add(this.valor);
-        }
     }
 }

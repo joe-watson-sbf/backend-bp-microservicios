@@ -1,6 +1,6 @@
 -- Create table for 'personas'
 CREATE TABLE IF NOT EXISTS personas (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY UNIQUE,
     nombre VARCHAR(255) NOT NULL,
     genero VARCHAR(255) NOT NULL,
     edad INT,
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS personas (
 
 -- Create table for 'clientes'
 CREATE TABLE IF NOT EXISTS clientes (
-    id BIGINT PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     contrasena VARCHAR(255) NOT NULL,
     estado BOOLEAN NOT NULL DEFAULT TRUE,
     FOREIGN KEY (id) REFERENCES personas(id)
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS clientes (
 INSERT INTO personas (nombre, genero, edad, identificacion, direccion, telefono) VALUES
  ('Juan Perez', 'MASCULINO', 30, '12345678A', 'Calle Falsa 123', '123456789'),
  ('Maria Gomez', 'FEMENINO', 25, '87654321B', 'Avenida Siempre Viva 742', '987654321'),
- ('Carlos Ruiz', 'MASCULINO', 35, '12345679A', 'Calle Falsa 124', '223456789'),
+ ('Carlos Rios', 'MASCULINO', 35, '12345679A', 'Calle Falsa 124', '223456789'),
  ('Ana Martinez', 'FEMENINO', 28, '87654322B', 'Avenida Siempre Viva 743', '287654321'),
  ('Luis Fernandez', 'MASCULINO', 40, '12345680A', 'Calle Falsa 125', '323456789'),
  ('Laura Sanchez', 'FEMENINO', 22, '87654323B', 'Avenida Siempre Viva 744', '387654321'),

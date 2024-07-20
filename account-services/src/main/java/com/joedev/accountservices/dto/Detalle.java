@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Detalle {
-    private Integer numeroCuenta;
+    private Long numeroCuenta;
     private BigDecimal saldo;
     private List<MovimientoDto> movimientos;
 }

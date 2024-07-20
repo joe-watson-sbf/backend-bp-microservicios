@@ -37,6 +37,8 @@ public class ClienteServicios implements BaseCrudServices<ClienteDto, Long> {
     @Override
     public ClienteDto save(ClienteDto clienteDto) {
         requireNonNull(clienteDto, "Los datos del cliente son requeridos!");
+        requireNonNull(clienteDto.getNombre(), "El nombre del cliente es requerido!");
+        requireNonNull(clienteDto.getIdentificacion(), "La identificación del cliente es requerida!");
         return mapper.map(
                 clienteRepository.save(
                         mapper.map(clienteDto, Cliente.class)

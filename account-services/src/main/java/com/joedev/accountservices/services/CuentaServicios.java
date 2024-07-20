@@ -89,7 +89,7 @@ public class CuentaServicios implements BaseCrudServices<CuentaDto, Long> {
     }
 
     @Transactional
-    public MovimientoDto registrarMovimiento(Long numeroCuenta, BigDecimal valor) {
+    public void registrarMovimiento(Long numeroCuenta, BigDecimal valor) {
         // antes de hacer cualquier operación es importante verificar el valor ingresado
         requiereValorDiferenteDeCero(valor);
 
@@ -111,11 +111,11 @@ public class CuentaServicios implements BaseCrudServices<CuentaDto, Long> {
                 .fecha(LocalDate.now())
                 .tipo(tipoMovimiento)
                 .valor(valor)
+                .saldoAnterior(cuenta.getSaldoInicial())
                 .saldo(cuenta.getSaldoInicial().add(valor))
                 .build();
         cuenta.agregarMovimiento(movimiento);
         cuentaRepository.save(cuenta);
-        return mapper.map(movimiento, MovimientoDto.class);
     }
 
     private void requiereValorDiferenteDeCero(BigDecimal valorIngresado){

@@ -15,6 +15,8 @@ class ClienteTest {
     @BeforeEach
     void setUp() {
         cliente = new Cliente();
+        cliente.setNombre("Juan");
+        cliente.setContrasena("123456");
     }
 
     @Test
