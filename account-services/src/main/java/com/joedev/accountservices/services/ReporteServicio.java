@@ -2,15 +2,16 @@ package com.joedev.accountservices.services;
 
 import com.joedev.accountservices.dto.ReportePorFechas;
 import com.joedev.accountservices.entity.Movimiento;
+import com.joedev.accountservices.exceptions.BusinessException;
 import com.joedev.accountservices.repository.MovimientoRepository;
 import com.joedev.accountservices.services.cliente.ClienteModel;
 import com.joedev.accountservices.services.cliente.ClienteApi;
-import exceptions.BusinessException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
-import static utils.Utils.requireNonNull;
+
+import static com.joedev.accountservices.services.Utils.requireNonNull;
 
 @RequiredArgsConstructor
 @Service

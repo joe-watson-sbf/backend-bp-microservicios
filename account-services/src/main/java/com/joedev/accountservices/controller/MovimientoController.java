@@ -24,8 +24,7 @@ public class MovimientoController {
         return ResponseEntity.ok(servicios.findById(id));
     }
 
-
-    /*@PostMapping
+    @PostMapping
     public ResponseEntity<MovimientoDto> save(MovimientoDto movimientoDto) {
         return ResponseEntity.ok(servicios.save(movimientoDto));
     }
@@ -40,5 +39,5 @@ public class MovimientoController {
     public ResponseEntity<Void> update(@PathVariable Long id, MovimientoDto movimientoDto) {
         servicios.update(id, movimientoDto);
         return ResponseEntity.ok().build();
-    }*/
+    }
 }

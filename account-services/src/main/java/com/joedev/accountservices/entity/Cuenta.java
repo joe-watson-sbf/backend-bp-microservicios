@@ -1,7 +1,7 @@
 package com.joedev.accountservices.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import exceptions.BusinessException;
+import com.joedev.accountservices.exceptions.BusinessException;
 import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;

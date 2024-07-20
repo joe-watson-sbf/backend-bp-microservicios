@@ -21,7 +21,6 @@
   <modules>
     <module>client-services</module>
     <module>account-services</module>
-    <module>shared</module>
   </modules>
 
   <properties>

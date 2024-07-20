@@ -1,6 +1,7 @@
 package com.joedev.clientservicios.controller;
 
 import com.joedev.clientservicios.dto.ClienteDto;
+import com.joedev.clientservicios.exceptions.ResponseMessage;
 import com.joedev.clientservicios.services.ClienteServicios;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -31,14 +32,14 @@ public class ClienteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> updateClient(@PathVariable Long id, @RequestBody ClienteDto clienteDto) {
+    public ResponseEntity<ResponseMessage> updateClient(@PathVariable Long id, @RequestBody ClienteDto clienteDto) {
         clientService.update(id, clienteDto);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(new ResponseMessage("Cliente actualizado correctamente", 200));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteClient(@PathVariable Long id) {
+    public ResponseEntity<ResponseMessage> deleteClient(@PathVariable Long id) {
         clientService.delete(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(new ResponseMessage("Cliente eliminado correctamente", 200));
     }
 }

@@ -1,7 +1,7 @@
 package com.joedev.accountservices.services.cliente;
 
-import exceptions.BusinessException;
-import exceptions.ResponseMessage;
+import com.joedev.accountservices.exceptions.BusinessException;
+import com.joedev.accountservices.exceptions.ResponseMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;

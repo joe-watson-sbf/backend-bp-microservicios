@@ -1,6 +1,5 @@
 package com.joedev.accountservices.controller;
 
-import com.joedev.accountservices.dto.ReporteEstadoCuenta;
 import com.joedev.accountservices.services.ReporteServicio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;

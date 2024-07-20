@@ -1,8 +1,8 @@
-package respositories;
+package com.joedev.accountservices.services;
 
 import java.util.List;
 
-public interface BaseCrudServices <T, ID> {
+public interface BaseCrudServices<T, ID> {
     List<T> findAll();
     T findById(ID id);
     T save(T t);

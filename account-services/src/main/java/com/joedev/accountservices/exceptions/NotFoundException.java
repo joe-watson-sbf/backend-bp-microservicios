@@ -1,4 +1,4 @@
-package exceptions;
+package com.joedev.accountservices.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

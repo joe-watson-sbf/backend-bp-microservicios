@@ -1,25 +1,20 @@
 package com.joedev.accountservices.services;
-
 import com.joedev.accountservices.dto.CuentaDto;
-import com.joedev.accountservices.dto.MovimientoDto;
 import com.joedev.accountservices.entity.Cuenta;
 import com.joedev.accountservices.entity.Movimiento;
 import com.joedev.accountservices.entity.TipoDeMovimiento;
+import com.joedev.accountservices.exceptions.BusinessException;
+import com.joedev.accountservices.exceptions.NotFoundException;
 import com.joedev.accountservices.repository.CuentaRepository;
 import com.joedev.accountservices.services.cliente.ClienteApi;
-import exceptions.BusinessException;
-import exceptions.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import respositories.BaseCrudServices;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-
-import static java.util.Objects.requireNonNull;
+import static com.joedev.accountservices.services.Utils.requireNonNull;
 
 @Service
 @RequiredArgsConstructor
