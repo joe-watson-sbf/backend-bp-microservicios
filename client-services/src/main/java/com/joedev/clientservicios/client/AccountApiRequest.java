@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Component
-@FeignClient(name = "account-services", url = "http://localhost:8080/api/cuentas")
+@FeignClient(name = "account-services", url = "http://localhost:8081/api/cuentas")
 public interface AccountApiRequest {
 
     @RequestMapping(value = "cliente/{clienteId}",  method = RequestMethod.DELETE)

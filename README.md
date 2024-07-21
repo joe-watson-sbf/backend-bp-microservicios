@@ -8,9 +8,15 @@ ___________________________________
 ### Run the project with docker
 
 - Download all the docker images from the following links:
+    
+    - [Discovery Server](https://hub.docker.com/r/joewatsonsbf/bp-discovery-server)
+    - [Account Services](https://hub.docker.com/r/joewatsonsbf/bp-account-services)
+    - [Client Services](https://hub.docker.com/r/joewatsonsbf/bp-client-services)
+    - [Api Gateway](https://hub.docker.com/r/joewatsonsbf/bp-api-gateway)
 
 
-- Run the following command to start the containers:
+
+Run the following command to start the containers:
 
 
 **Acount Services**

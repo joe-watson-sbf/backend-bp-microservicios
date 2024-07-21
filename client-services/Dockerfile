@@ -1,8 +1,7 @@
 FROM openjdk:17
 
-COPY target/*.jar app.jar
-COPY src/main/resources/application.yml application.yml
-
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
 EXPOSE 8082/tcp
 
 ENTRYPOINT ["java","-jar","/app.jar"]

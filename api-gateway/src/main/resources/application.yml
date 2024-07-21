@@ -1,6 +1,7 @@
 eureka:
   client:
-    register-with-eureka: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka
 
 spring:
   application:
@@ -32,3 +33,10 @@ server:
   port: 8080
 
 
+# actuator
+management:
+  endpoints.web.exposure.include: health,info
+  info.env.enabled: true
+
+info:
+  application.name: ${spring.application.name}

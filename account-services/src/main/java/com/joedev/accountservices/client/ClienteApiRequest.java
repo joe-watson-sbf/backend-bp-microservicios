@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.Optional;
 
 @Component
-@FeignClient(name = "client-services", url = "http://localhost:8080/api/clientes")
+@FeignClient(name = "client-services", url = "http://localhost:8082/api/clientes")
 public interface ClienteApiRequest {
 
     @RequestMapping(value = "{clienteId}",  method = RequestMethod.GET)

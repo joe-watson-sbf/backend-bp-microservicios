@@ -30,3 +30,11 @@ spring:
     init:
       platform: h2
       mode: always
+
+# actuator
+management:
+  endpoints.web.exposure.include: health,info
+  info.env.enabled: true
+
+info:
+  application.name: ${spring.application.name}
