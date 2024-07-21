@@ -8,4 +8,5 @@ import java.util.Optional;
 @Repository
 public interface CuentaRepository extends JpaRepository<Cuenta, Long>{
     Optional<Cuenta> findCuentaByNumero(Long numero);
+    void deleteCuentaByClienteId(Long clienteId);
 }

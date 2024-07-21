@@ -1,4 +1,4 @@
-package exceptions;
+package com.joedev.clientservicios.exceptions;
 
 import lombok.*;
 

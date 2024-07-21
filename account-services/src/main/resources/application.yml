@@ -1,0 +1,32 @@
+server:
+  port: 8081
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+        defaultZone: http://localhost:8761/eureka
+
+spring:
+  application:
+    name: accounts
+  config:
+    import: optional:configserver:http://localhost:8888
+  datasource:
+    url: jdbc:h2:mem:cuentas
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+  h2:
+    console:
+      enabled: true
+  sql:
+    init:
+      platform: h2
+      mode: always

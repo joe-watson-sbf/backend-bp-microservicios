@@ -1,4 +1,4 @@
-package com.joedev.accountservices.services.cliente;
+package com.joedev.accountservices.client;
 import lombok.*;
 
 @Getter

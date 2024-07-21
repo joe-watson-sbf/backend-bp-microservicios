@@ -2,16 +2,13 @@ package com.joedev.accountservices.services;
 
 import com.joedev.accountservices.dto.MovimientoDto;
 import com.joedev.accountservices.entity.Movimiento;
+import com.joedev.accountservices.exceptions.NotFoundException;
 import com.joedev.accountservices.repository.MovimientoRepository;
-import exceptions.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import respositories.BaseCrudServices;
-
 import java.util.List;
-
-import static utils.Utils.requireNonNull;
+import static com.joedev.accountservices.services.Utils.requireNonNull;
 
 @Service
 @RequiredArgsConstructor

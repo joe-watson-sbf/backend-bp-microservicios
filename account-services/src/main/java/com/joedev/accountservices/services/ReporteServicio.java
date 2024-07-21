@@ -1,23 +1,23 @@
 package com.joedev.accountservices.services;
 
+import com.joedev.accountservices.client.ClienteApiRequest;
 import com.joedev.accountservices.dto.ReportePorFechas;
 import com.joedev.accountservices.entity.Movimiento;
+import com.joedev.accountservices.exceptions.BusinessException;
 import com.joedev.accountservices.repository.MovimientoRepository;
-import com.joedev.accountservices.services.cliente.ClienteModel;
-import com.joedev.accountservices.services.cliente.ClienteApi;
-import exceptions.BusinessException;
+import com.joedev.accountservices.client.ClienteModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
-import static utils.Utils.requireNonNull;
+import static com.joedev.accountservices.services.Utils.requireNonNull;
 
 @RequiredArgsConstructor
 @Service
 public class ReporteServicio {
 
     private final MovimientoRepository movimientoRepository;
-    private final ClienteApi clienteApi;
+    private final ClienteApiRequest clienteApi;
 
     public List<ReportePorFechas> generarReporteEstadoCuenta(Long clienteId, LocalDate fechaInicio, LocalDate fechaFin) {
         requireNonNull(clienteId, "El id del cliente no puede ser nulo");

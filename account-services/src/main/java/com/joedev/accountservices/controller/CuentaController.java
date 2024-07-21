@@ -1,11 +1,11 @@
 package com.joedev.accountservices.controller;
 
 import com.joedev.accountservices.dto.CuentaDto;
+import com.joedev.accountservices.exceptions.ResponseMessage;
 import com.joedev.accountservices.services.CuentaServicios;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -31,18 +31,30 @@ public class CuentaController {
     }
 
     @PutMapping
-    public ResponseEntity<Void> registrarMovimiento(
+    public ResponseEntity<ResponseMessage> registrarMovimiento(
             @RequestParam Long numeroCuenta,
             @RequestParam BigDecimal saldo
             ) {
         servicios.registrarMovimiento(numeroCuenta, saldo);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(
+                new ResponseMessage("Movimiento registrado", 200)
+        );
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public ResponseEntity<ResponseMessage> delete(@PathVariable Long id) {
         servicios.delete(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(
+                new ResponseMessage("Cuenta eliminada", 200)
+        );
+    }
+
+    @DeleteMapping("/cliente/{id}")
+    public ResponseEntity<ResponseMessage> deleteByClientId(@PathVariable Long id) {
+        servicios.deleteByClientId(id);
+        return ResponseEntity.ok(
+                new ResponseMessage("Cuentas eliminadas", 200)
+        );
     }
 
 }

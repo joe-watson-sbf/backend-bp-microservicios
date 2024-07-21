@@ -1,31 +1,28 @@
 package com.joedev.accountservices.services;
+
+import com.joedev.accountservices.client.ClienteApiRequest;
 import com.joedev.accountservices.dto.CuentaDto;
 import com.joedev.accountservices.entity.Cuenta;
 import com.joedev.accountservices.entity.Movimiento;
 import com.joedev.accountservices.entity.TipoDeMovimiento;
+import com.joedev.accountservices.exceptions.BusinessException;
+import com.joedev.accountservices.exceptions.NotFoundException;
 import com.joedev.accountservices.repository.CuentaRepository;
-import com.joedev.accountservices.services.cliente.ClienteApi;
-import exceptions.BusinessException;
-import exceptions.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import respositories.BaseCrudServices;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-
-import static java.util.Objects.requireNonNull;
+import static com.joedev.accountservices.services.Utils.requireNonNull;
 
 @Service
 @RequiredArgsConstructor
 public class CuentaServicios implements BaseCrudServices<CuentaDto, Long> {
     private final CuentaRepository cuentaRepository;
     private final ModelMapper mapper;
-    private final ClienteApi clienteApi;
-
+    private final ClienteApiRequest clienteApiRequest;
 
     @Override
     public List<CuentaDto> findAll() {
@@ -51,9 +48,12 @@ public class CuentaServicios implements BaseCrudServices<CuentaDto, Long> {
          * si existe realmente el cliente con el id proporcionado,
          * pero to-do depende de la lógica de negocio
          * */
-
-        if(!clienteApi.existeCliente(cuentaDto.getClienteId())){
-            throw new BusinessException("El cliente con el id: " + cuentaDto.getClienteId() + " no existe");
+        try {
+            clienteApiRequest.findById(cuentaDto.getClienteId());
+        } catch (Exception e) {
+            throw new NotFoundException(
+                    "No se puede crear la cuenta porque el cliente con el id: " + cuentaDto.getClienteId() + " no existe"
+            );
         }
 
         Cuenta cuenta = Cuenta.builder()
@@ -80,10 +80,6 @@ public class CuentaServicios implements BaseCrudServices<CuentaDto, Long> {
         * Hay que tener en cuenta que no se puede modificar el saldo inicial de una cuenta
         * y muchos datos más, pero to-do depende de la lógica de negocio
         * */
-
-        /*Cuenta cuenta = getCuenta(id);
-        cuenta.setSaldoInicial(cuentaDto.getSaldoInicial());
-        cuentaRepository.save(cuenta);*/
     }
 
     @Transactional
@@ -129,5 +125,15 @@ public class CuentaServicios implements BaseCrudServices<CuentaDto, Long> {
                 .orElseThrow(
                         () -> new NotFoundException("No se encontró la cuenta con el id: " + id)
                 );
+    }
+
+    public void deleteByClientId(Long id) {
+        requireNonNull(id, "El id del cliente no puede ser nulo");
+        try {
+            cuentaRepository.deleteCuentaByClienteId(id);
+        } catch (Exception e) {
+            // dont do anything
+        }
+
     }
 }

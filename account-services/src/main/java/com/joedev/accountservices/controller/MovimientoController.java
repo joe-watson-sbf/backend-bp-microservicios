@@ -1,11 +1,11 @@
 package com.joedev.accountservices.controller;
 
 import com.joedev.accountservices.dto.MovimientoDto;
+import com.joedev.accountservices.exceptions.ResponseMessage;
 import com.joedev.accountservices.services.MovimientoServicios;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -30,14 +30,14 @@ public class MovimientoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public ResponseEntity<ResponseMessage> delete(@PathVariable Long id) {
         servicios.delete(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(new ResponseMessage("Movimiento eliminado", 200));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> update(@PathVariable Long id, MovimientoDto movimientoDto) {
+    public ResponseEntity<ResponseMessage> update(@PathVariable Long id, MovimientoDto movimientoDto) {
         servicios.update(id, movimientoDto);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(new ResponseMessage("Movimiento actualizado", 200));
     }
 }
